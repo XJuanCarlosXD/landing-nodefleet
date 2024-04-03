@@ -9,7 +9,7 @@ const Input = (props) => {
         </label>
         <textarea
           {...props}
-          className="p-2 rounded-lg bg-white/10 border border-white"
+          className="p-2 rounded-lg outline-none bg-white/10 border border-white"
         />
       </div>
     );
@@ -21,7 +21,7 @@ const Input = (props) => {
         </label>
         <input
           {...props}
-          className="p-2 rounded-lg bg-white/10 border border-white"
+          className="p-2 rounded-lg outline-none bg-white/10 border border-white"
         />
       </div>
     );

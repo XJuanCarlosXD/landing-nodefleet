@@ -61,7 +61,7 @@ const Team = (props) => {
           images={"Lowell.jpg"}
           className={"max-sm:w-28"}
         />
-        <div className="flex flex-col gap-2 max-sm:px-10">
+        <div className="flex flex-col gap-2 max-sm:px-10 lg:w-4/12 md:w-4/12">
           <h4 className="text-indigo-300 font-semibold font-sans text-lg">
             Lowell Abbott CEO
           </h4>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Index = (props) => {
   return (
-    <div className="h-screen flex justify-center items-center -mt-20" id="Home">
+    <div className="h-screen flex justify-center items-center -mt-20">
       <img
         src="/images/home-lan.png"
         alt="home"

@@ -21,7 +21,7 @@ const Navbar = (props) => {
   };
   return (
     <div>
-      <div className="relative">
+      <div className="relative" id="Home">
         <div className="sticky top-0 left-0 z-50 flex justify-between items-center w-full p-8 group">
           <img src="/images/logo.svg" alt="Logo" className="relative z-50" />
           <button
@@ -43,7 +43,7 @@ const Navbar = (props) => {
             ))}
           </div>
         </div>
-        <section className="">
+        <section>
           <Outlet></Outlet>
         </section>
       </div>

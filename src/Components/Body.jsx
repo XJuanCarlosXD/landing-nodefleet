@@ -20,7 +20,7 @@ const Body = (props) => {
         ))}
       </div>
       <div className="px-8 max-sm:px-6 text-center text-base font-normal font-sans my-16 max-sm:my-10 w-full">
-        <div className="text-white text-center flex items-start justify-center text-xl font-sans font-thin max-sm:text-sm max-sm:flex-col lg:flex-row md:flex-col md:text-lg">
+        <div className="text-white text-center flex items-start justify-center text-md font-sans font-normal max-sm:text-sm max-sm:flex-col lg:flex-row md:flex-col md:text-md ">
           <img
             src="/images/node-green.svg"
             alt="nodefleet"
