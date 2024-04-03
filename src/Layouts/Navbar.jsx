@@ -11,9 +11,9 @@ const Navbar = (props) => {
   return (
     <div>
       <div className="relative">
-        <div className="fixed top-0 left-0 z-50 flex justify-between items-center w-full p-4">
+        <div className="sticky top-0 left-0 z-50 flex justify-between items-center w-full p-8">
           <img src="/images/logo.svg" alt="Logo" />
-          <div className="flex justify-between items-center gap-4">
+          <div className="flex justify-between items-center gap-10 max-sm:hidden">
             {Menu.map(({ name, hash }, index) => (
               <a
                 key={index}
@@ -25,7 +25,7 @@ const Navbar = (props) => {
             ))}
           </div>
         </div>
-        <section className="relative">
+        <section className="">
           <Outlet></Outlet>
         </section>
       </div>

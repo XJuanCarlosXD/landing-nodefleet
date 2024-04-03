@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  background-color: rgba(28, 27, 44, 1);
+  background-color: #12111d;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
@@ -12,7 +12,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.animated-text {
+  animation: moveLeft 5s reverse infinite;
+}
+
+@keyframes moveLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
