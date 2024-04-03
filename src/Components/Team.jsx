@@ -47,7 +47,10 @@ const Team = (props) => {
     },
   ];
   return (
-    <div className="flex flex-col gap-4 justify-center items-center text-white ">
+    <div
+      className="flex flex-col gap-4 justify-center items-center text-white"
+      id="OurTeam"
+    >
       <h2 className="font-bold text-4xl">Our Team</h2>
       <div className="flex justify-center items-center max-sm:flex-col gap-4 pt-4 max-sm:pb-5 pb-16">
         <User

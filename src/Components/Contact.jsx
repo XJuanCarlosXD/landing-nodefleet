@@ -3,7 +3,10 @@ import Input from "./Inputs";
 
 const Contact = (props) => {
   return (
-    <div className="flex flex-col gap-4 justify-center items-center text-white relative py-20 max-sm:py-14">
+    <div
+      className="flex flex-col gap-4 justify-center items-center text-white relative py-20 max-sm:py-14"
+      id="Contact"
+    >
       <img
         src="/images/end-lan.png"
         alt="home"
