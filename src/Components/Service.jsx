@@ -20,12 +20,12 @@ const Service = (props) => {
     {
       name: "Explorer As A Service",
       icon: "dashboard.svg",
-      sub: "Development of customized blockchain reliable explorers/indexers and analytics systems for protocols and new blockchain projects. Examples (https://berachain.nodefleet.net/) and poktradar (https://staging.poktradar.io/)",
+      sub: "Development of customized blockchain reliable explorers/indexers and analytics systems for protocols and new blockchain projects. <br />Examples (https://berachain.nodefleet.net/) and poktradar (https://staging.poktradar.io/)",
     },
   ];
   return (
     <div
-      className="flex flex-col gap-4 justify-center items-center text-white py-16 max-sm:py-10"
+      className="flex flex-col gap-4 justify-center items-center text-white"
       id="Service"
     >
       <h2 className="font-bold text-4xl">Our Service</h2>
@@ -42,7 +42,7 @@ const Service = (props) => {
             />
             <div className="text-base flex flex-col gap-2">
               <h4 className="font-semibold text-lg font-sans">{name}</h4>
-              <p className="font-sans text-md max-sm:text-sm font-normal lg:w-80 text-justify text-zinc-300">
+              <p className="font-sans text-md max-sm:text-sm font-normal lg:w-80 text-zinc-300">
                 <div
                   dangerouslySetInnerHTML={{
                     __html: sub.replace(/\(([^)]+)\)/g, (match, url) => {

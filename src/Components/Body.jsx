@@ -8,8 +8,8 @@ const Body = (props) => {
     { name: "+450M", text: "Relays Last 24H" },
   ];
   return (
-    <div className="relative flex flex-col justify-center items-center w-full gap-2 -mt-5">
-      <div className="bg-slate-700 py-8 grid grid-cols-4 max-sm:grid-cols-2 gap-2 text-white place-items-center w-full">
+    <div className="relative flex flex-col justify-center items-center w-full gap-2 -mt-4 -top-0.5">
+      <div className="bg-slate-700 py-8 grid grid-cols-4 max-sm:grid-cols-2 gap-2 text-white place-items-center w-full pointer-events-none">
         {review.map(({ name, text }, index) => (
           <div key={index} className="text-center">
             <h4 className="font-semibold text-4xl max-sm:text-3xl">{name}</h4>
@@ -19,19 +19,18 @@ const Body = (props) => {
           </div>
         ))}
       </div>
-      <div className="px-8 max-sm:px-6 text-center text-base font-normal font-sans my-16 max-sm:my-10 w-full">
-        <div className="text-white text-center flex items-start justify-center text-md font-sans font-normal max-sm:text-sm max-sm:flex-col lg:flex-row md:flex-col md:text-md ">
-          <img
-            src="/images/node-green.svg"
-            alt="nodefleet"
-            className="w-24 mt-1 lg:translate-x-20 max-sm:translate-x-0 md:translate-x-0"
-          />{" "}
-          is a Web3 node running, infrastructure and blockchain development
-          company focused on <br /> delivering high performance and truly
-          descentralized infrastructure on bare metal machines across different
-          <br />
-          providers and regions. This is done while providing a development
-          process focused on the Web3 user experience.
+      <div className="lg:w-6/12 max-sm:w-10/12 max-sm:px-6 text-base font-normal font-sans my-16 max-sm:my-10">
+        <div className="text-white flex items-start justify-center text-md font-sans font-normal max-sm:text-sm max-sm:flex-col lg:flex-row md:flex-col md:text-md text-justify pointer-events-none">
+          <span>
+            <span className="inline-flex flex-col justify-end items-end w-24">
+              <img src="/images/node-green.svg" alt="nodefleet" />
+            </span>{" "}
+            is a Web3 node running, infrastructure and blockchain development
+            company focused on delivering high performance and truly
+            descentralized infrastructure on bare metal machines across
+            different providers and regions. This is done while providing a
+            development process focused on the Web3 user experience.
+          </span>
         </div>
       </div>
     </div>

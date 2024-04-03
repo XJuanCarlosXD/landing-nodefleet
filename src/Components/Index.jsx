@@ -9,13 +9,13 @@ const Index = (props) => {
         className="absolute top-0 left-0 w-full h-screen"
       />
       <div className="relative text-white text-center flex flex-col gap-4">
-        <h4 className="font-bold text-6xl max-sm:text-5xl max-sm:leading-relaxed leading-snug max-sm:-mt-12 max-sm:capitalize">
+        <h4 className="font-bold text-6xl max-sm:text-5xl max-sm:leading-relaxed leading-snug max-sm:-mt-12 max-sm:capitalize pointer-events-none">
           Connect to nodes with
           <br />
           <span className="bg-green-300 text-morado px-2">impressive</span>{" "}
           performance
         </h4>
-        <p className="text-2xl max-sm:text-sm max-sm:px-8">
+        <p className="text-2xl max-sm:text-sm max-sm:px-8 pointer-events-none">
           Handcrafted <b>Infra</b> | Permanent <b>Research</b> | Permanent{" "}
           <b>Development</b>
         </p>
@@ -28,7 +28,7 @@ const Index = (props) => {
             Get started
           </a>
           <a href="#more">
-            Lear more <i className="fas fa-arrow-right-long text-sm"></i>
+            Learn more <i className="fas fa-arrow-right-long text-sm"></i>
           </a>
         </div>
       </div>
