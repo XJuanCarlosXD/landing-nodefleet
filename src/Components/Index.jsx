@@ -22,12 +22,17 @@ const Index = (props) => {
 
         <div className="flex flex-row justify-center items-center gap-6 text-lg max-sm:text-base relative top-10 font-semibold">
           <a
-            href="#start"
+            href="https://t.me/nodefleet"
             className="text-morado bg-sky-500 p-2 px-4 rounded-lg hover:bg-green-300 transition-all"
           >
             Get started
           </a>
-          <a href="#more">
+          <a
+            href="#service"
+            onClick={() => {
+              document.getElementById("Service11").click();
+            }}
+          >
             Learn more <i className="fas fa-arrow-right-long text-sm"></i>
           </a>
         </div>

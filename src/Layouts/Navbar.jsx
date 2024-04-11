@@ -36,6 +36,7 @@ const Navbar = (props) => {
                 key={index}
                 className="no-underline text-white text-base font-semibold max-sm:py-2"
                 href={hash}
+                id={name + index + 1}
                 onClick={(e) => smoothScroll(e, hash)}
               >
                 {name}
