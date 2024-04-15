@@ -22,7 +22,7 @@ const Contact = (props) => {
 
     try {
       const response = await axios.post(
-        "https://appbot-backend.herokuapp.com/send-email/",
+        "https://staging.api.appbot.do/send-email/",
         emailData
       );
       console.log("Correo enviado:", response.data);
