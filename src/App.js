@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Layouts/Navbar";
 import Home from "./Pages/Home";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      <Toaster position="bottom-center" reverseOrder={false} />
     </div>
   );
 }

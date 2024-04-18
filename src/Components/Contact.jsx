@@ -2,12 +2,14 @@ import React from "react";
 import Input from "./Inputs";
 import axios from "axios"; // Importa Axios
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const Contact = (props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -16,7 +18,7 @@ const Contact = (props) => {
     const emailData = {
       sender_email: "juancarlos192003@gmail.com",
       recipient_email: email,
-      subject: "Asunto del correo",
+      subject: "Contact Info Nodefleet",
       body: `Nombre: ${name} ${last}\nCorreo electrónico: ${email}\n\nMensaje:\n${message}`,
     };
 
@@ -26,8 +28,11 @@ const Contact = (props) => {
         emailData
       );
       console.log("Correo enviado:", response.data);
+      toast.success("Successfully send email!");
+      reset({ name: "", last: "", email: "", message: "" });
     } catch (error) {
       console.error("Error al enviar el correo:", error);
+      toast.error("error to send email!");
     }
   };
 
