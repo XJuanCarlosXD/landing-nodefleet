@@ -4,7 +4,7 @@ const Index = (props) => {
   return (
     <div className="h-screen flex justify-center items-center -mt-20">
       <img
-        src="/images/home-lan.png"
+        src="https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/home-lan.png"
         alt="home"
         className="absolute top-0 left-0 w-full h-screen"
       />

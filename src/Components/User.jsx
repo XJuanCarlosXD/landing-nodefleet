@@ -4,7 +4,7 @@ const User = ({ twitter, linke, telegram, images, className }) => {
   return (
     <div className="group rounded-full border-4 border-white relative  flex flex-col items-center justify-center">
       <img
-        src={`/images/users/${images}`}
+        src={`${images}`}
         alt="lowell"
         className={`w-36 rounded-full group-hover:opacity-10 transition-all ${className}`}
       />

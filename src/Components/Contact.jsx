@@ -42,7 +42,7 @@ const Contact = (props) => {
       id="Contact"
     >
       <img
-        src="/images/end-lan.png"
+        src="https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/end-lan.png"
         alt="home"
         className="absolute top-0 left-0 w-full h-full -z-10"
       />

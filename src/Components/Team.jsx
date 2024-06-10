@@ -4,7 +4,8 @@ import User from "./User";
 const Team = (props) => {
   const array = [
     {
-      image: "Adrian.jpg",
+      image:
+        "https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/Adrian.jpg",
       name: "Adrian Estevez",
       position: "Fullstack Dev",
       linkedin:
@@ -13,7 +14,8 @@ const Team = (props) => {
       telegram: "https://web.telegram.org/a/#315738401",
     },
     {
-      image: "Steven.jpg",
+      image:
+        "https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/Steven.jpg",
       name: "Steven Martinez",
       position: "DevOps",
       linkedin:
@@ -22,7 +24,8 @@ const Team = (props) => {
       telegram: "https://web.telegram.org/k/#@TinyWombat",
     },
     {
-      image: "Kael.jpg",
+      image:
+        "https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/Kael.jpg",
       name: "Kael Abbott",
       position: "CTO",
       linkedin: "https://www.linkedin.com/in/kael-abbott-ab578713a/",
@@ -30,7 +33,8 @@ const Team = (props) => {
       telegram: "https://web.telegram.org/k/#@nosedimetu",
     },
     {
-      image: "Cristy.jpg",
+      image:
+        "https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/Cristy.jpg",
       name: "Cristy Taveras",
       position: "UX/UI Designer",
       linkedin: "https://do.linkedin.com/in/cristy-taveras",
@@ -38,7 +42,8 @@ const Team = (props) => {
       telegram: "https://web.telegram.org/k/#@redstargazer08",
     },
     {
-      image: "Kath_2.jpg",
+      image:
+        "https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/Kath_2.jpg",
       name: "Katherine Andujar",
       position: "UX/UI Designer",
       linkedin: "https://do.linkedin.com/in/katherine-andújar-843631121",
@@ -58,7 +63,9 @@ const Team = (props) => {
           telegram={"https://web.telegram.org/k/#@comrade1990"}
           linke={"https://do.linkedin.com/in/lowell-abbott-vidal-8280aa72"}
           twitter={"https://twitter.com/blackrain_91"}
-          images={"Lowell.jpg"}
+          images={
+            "https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/Lowell.jpg"
+          }
           className={"max-sm:w-28"}
         />
         <div className="flex flex-col gap-2 max-sm:px-10 lg:w-4/12 md:w-4/12">
