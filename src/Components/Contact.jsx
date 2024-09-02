@@ -17,7 +17,7 @@ const Contact = (props) => {
 
     const emailData = {
       sender_email: "juancarlos192003@gmail.com",
-      recipient_email: email,
+      recipient_email: "kath@nodefleet.net",
       subject: "Contact Info Nodefleet",
       body: `Nombre: ${name} ${last}\nCorreo electrónico: ${email}\n\nMensaje:\n${message}`,
     };
