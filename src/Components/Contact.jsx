@@ -11,6 +11,7 @@ const Contact = (props) => {
     formState: { errors },
     reset,
   } = useForm();
+  const { isFaucets } = props;
 
   const onSubmit = async (data) => {
     const { name, last, email, message } = data;
@@ -41,11 +42,13 @@ const Contact = (props) => {
       className="flex flex-col gap-4 justify-center items-center text-white relative py-20 max-sm:py-14"
       id="Contact"
     >
-      <img
-        src="https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/end-lan.png"
-        alt="home"
-        className="absolute top-0 left-0 w-full h-full -z-10"
-      />
+      {!isFaucets && (
+        <img
+          src="https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/end-lan.png"
+          alt="home"
+          className="absolute top-0 left-0 w-full h-full -z-10"
+        />
+      )}
       <h2 className="font-bold text-4xl mb-6">Contact Us</h2>
 
       <form

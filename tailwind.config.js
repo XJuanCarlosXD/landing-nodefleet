@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         morado: "rgba(42, 39, 75, 1)",
+        morado2: "#222037",
       },
     },
   },
