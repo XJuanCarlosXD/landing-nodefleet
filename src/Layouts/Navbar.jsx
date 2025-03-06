@@ -1,21 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
+import { motion } from "framer-motion";
 
-const Navbar = (props) => {
+const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
   const Menu = [
     { name: "Home", hash: "/faucet" },
     { name: "Service", hash: "https://nodefleet.org/#Service" },
     { name: "Our Team", hash: "https://nodefleet.org/#OurTeam" },
     { name: "Contact", hash: "https://nodefleet.org/#Contact" },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Cambiar el estado cuando el scroll pase de 50px
+      const isScrolled = window.scrollY > 50;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Limpieza del event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrolled]);
+
   return (
     <div>
       <div className="relative" id="Home">
-        <div className="sticky top-0 left-0 z-50 flex justify-between items-center w-full p-8 group">
+        <motion.div
+          className={`sticky top-0 left-0 z-50 flex justify-between items-center w-full p-8 py-4 group transition-all duration-300 ${
+            scrolled ? "bg-morado/95 backdrop-blur-sm shadow-lg" : ""
+          }`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
           <img
             src="/images/logo.svg"
             alt="Logo"
-            className="relative z-50 w-56"
+            className="relative z-50 w-36"
           />
           <button
             type="button"
@@ -35,7 +63,7 @@ const Navbar = (props) => {
               </a>
             ))}
           </div>
-        </div>
+        </motion.div>
         <section>
           <Outlet></Outlet>
         </section>

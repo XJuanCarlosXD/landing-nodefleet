@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "./Layouts/Navbar";
 import { Toaster } from "react-hot-toast";
 import { initializeApp } from "firebase/app";
@@ -34,7 +34,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Navbar />}>
             <Route index element={<Faucets />} />
@@ -45,7 +45,7 @@ function App() {
             <Route path="*" element={<Navigate to="/faucets" replace />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       <Toaster position="bottom-center" reverseOrder={false} />
     </div>
   );

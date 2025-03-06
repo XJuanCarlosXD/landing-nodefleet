@@ -129,15 +129,15 @@ const Faucets = () => {
   return (
     <div className="h-auto flex flex-col gap-0">
       <motion.div
-        className="h-auto min-h-screen flex justify-start flex-col gap-4 items-start -mt-20 p-4 md:p-20"
+        className="h-auto min-h-screen flex justify-start flex-col gap-4 items-start -mt-10 p-4 md:p-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
         <motion.img
-        src="https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/home-lan.png"
-        alt="home"
-        className="absolute top-0 left-0 w-full h-screen"
+          src="https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/home-lan.png"
+          alt="home"
+          className="absolute top-0 left-0 w-full h-screen"
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{
@@ -152,7 +152,7 @@ const Faucets = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <h1 className="text-4xl md:text-6xl mb-2">
+          <h1 className="text-2xl md:text-4xl mb-2">
             RPC public <b>endpoints</b>
           </h1>
           <hr className="w-10/12 h-1 bg-white" />
@@ -167,7 +167,7 @@ const Faucets = () => {
         >
           <div className="w-full flex flex-col gap-4 mb-4 md:mb-8">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
-              <h2 className="text-2xl md:text-4xl text-white font-semibold">
+              <h2 className="text-xl md:text-2xl text-white font-semibold">
                 Blockchain list
               </h2>
               <div className="text-white">
@@ -175,11 +175,11 @@ const Faucets = () => {
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center py-2 text-base md:text-xl">
+            <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center py-2 text-base md:text-lg">
               <div className="flex gap-0 items-center border rounded-lg border-white w-full md:w-auto">
                 <button
                   onClick={() => handleFilterClick("all")}
-                  className={`px-4 md:px-6 py-2 border-r rounded-l-lg border-white font-medium transition-colors flex-1 md:flex-none ${
+                  className={`px-4 md:px-4 py-1.5 border-r rounded-l-lg border-white font-medium transition-colors flex-1 md:flex-none ${
                     activeFilters.all
                       ? "bg-[#7a65d0] text-white"
                       : "bg-[#222038D4] text-gray-300"
@@ -189,7 +189,7 @@ const Faucets = () => {
                 </button>
                 <button
                   onClick={() => handleFilterClick("mainnet")}
-                  className={`px-4 md:px-6 py-2 border-r border-white font-medium transition-colors flex-1 md:flex-none ${
+                  className={`px-4 md:px-4 py-1.5 border-r border-white font-medium transition-colors flex-1 md:flex-none ${
                     activeFilters.mainnet
                       ? "bg-[#3c7b97] text-white"
                       : "bg-[#222038D4] text-gray-300"
@@ -199,7 +199,7 @@ const Faucets = () => {
                 </button>
                 <button
                   onClick={() => handleFilterClick("archival")}
-                  className={`px-4 md:px-6 py-2 font-medium rounded-r-lg transition-colors flex-1 md:flex-none ${
+                  className={`px-4 md:px-4 py-1.5 font-medium rounded-r-lg transition-colors flex-1 md:flex-none ${
                     activeFilters.archival
                       ? "bg-[#484c71] text-white"
                       : "bg-[#222038D4] text-gray-300"
@@ -217,7 +217,7 @@ const Faucets = () => {
                   onChange={(e) =>
                     setFilters((prev) => ({ ...prev, search: e.target.value }))
                   }
-                  className="px-4 py-2 rounded-lg bg-[#222038D4] w-full border border-white text-white placeholder-gray-400 focus:outline-none text-base md:text-xl"
+                  className="px-4 py-1.5 rounded-lg bg-[#222038D4] w-full border border-white text-white placeholder-gray-400 focus:outline-none text-base md:text-xl"
                 />
                 <i className="fa-solid fa-magnifying-glass text-white text-xl absolute right-4 top-1/2 -translate-y-1/2"></i>
               </div>
@@ -225,7 +225,7 @@ const Faucets = () => {
           </div>
 
           <div className="w-full">
-            <div className="hidden md:grid grid-cols-1 md:grid-cols-5 place-items-center gap-4 p-4 bg-morado3 rounded-t-xl text-gray-300 text-2xl font-semibold">
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-5 place-items-center gap-4 p-4 bg-morado3 rounded-t-xl text-gray-300 text-xl font-semibold">
               <div>Blockchain Node</div>
               <div>Network</div>
               <div>Node Type</div>
@@ -246,7 +246,9 @@ const Faucets = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <div className="flex flex-col md:hidden w-full gap-4 mb-4">
-                      <div className="text-gray-300 font-medium">Blockchain Node</div>
+                      <div className="text-gray-300 font-medium">
+                        Blockchain Node
+                      </div>
                       <div className="flex items-center justify-center">
                         <img
                           src={blockchain.logo}
@@ -265,21 +267,27 @@ const Faucets = () => {
                     </div>
 
                     <div className="flex flex-col md:flex-row w-full md:w-auto gap-2">
-                      <div className="text-gray-300 md:hidden font-medium">Network</div>
+                      <div className="text-gray-300 md:hidden font-medium">
+                        Network
+                      </div>
                       <div className="bg-[#3c7b97] text-lg px-3 py-3 rounded-lg w-full md:w-fit text-center">
                         {blockchain.network}
                       </div>
                     </div>
 
                     <div className="flex flex-col md:flex-row w-full md:w-auto gap-2">
-                      <div className="text-gray-300 md:hidden font-medium">Node Type</div>
+                      <div className="text-gray-300 md:hidden font-medium">
+                        Node Type
+                      </div>
                       <div className="bg-[#484c71] px-3 py-3 rounded-lg w-full md:w-fit text-center">
                         {blockchain.nodeType}
                       </div>
                     </div>
 
                     <div className="flex flex-col w-full md:w-auto gap-2">
-                      <div className="text-gray-300 md:hidden font-medium">Public RPC Endpoint</div>
+                      <div className="text-gray-300 md:hidden font-medium">
+                        Public RPC Endpoint
+                      </div>
                       <div className="flex flex-col md:flex-row gap-4 bg-[#3d4954] px-3 py-3 rounded-lg w-full">
                         <div className="flex items-center gap-2">
                           <i className="fa-solid fa-link"></i>
@@ -294,7 +302,11 @@ const Faucets = () => {
                         </div>
                         <select
                           onChange={(e) =>
-                            handleEndpointChange(e, blockchain.rpcLinks, blockchain.id)
+                            handleEndpointChange(
+                              e,
+                              blockchain.rpcLinks,
+                              blockchain.id
+                            )
                           }
                           value={selectedEndpoints[blockchain.id]?.value || ""}
                           className="text-[#3d4954] text-base md:text-lg font-bold focus:outline-[#99dfaf] px-4 py-2 font-['Roboto'] rounded-lg bg-[#99dfaf] cursor-pointer hover:bg-[#8accA0] transition-colors w-full md:w-auto"
@@ -309,7 +321,9 @@ const Faucets = () => {
                     </div>
 
                     <div className="flex flex-col w-full md:w-auto gap-2">
-                      <div className="text-gray-300 md:hidden font-medium">Faucets</div>
+                      <div className="text-gray-300 md:hidden font-medium">
+                        Faucets
+                      </div>
                       <div>
                         {blockchain.faucetLink ? (
                           isValidUrl(blockchain.faucetLink) ? (
