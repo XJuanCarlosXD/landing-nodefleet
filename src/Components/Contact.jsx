@@ -3,6 +3,7 @@ import Input from "./Inputs";
 import axios from "axios"; // Importa Axios
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Contact = (props) => {
   const {
@@ -127,10 +128,16 @@ const Contact = (props) => {
           <img src="/images/github.svg" alt="github" />
         </a>
       </div>
-      <div className="flex flex-row justify-between font-sans text-sm mt-5">
+      <div className="flex flex-row gap-2 justify-between font-sans text-sm mt-5">
         <p className="text-gray-500 font-sans font-normal">
-          © 2024 Nodefleet, Inc. All rights reserved.
+          © {new Date().getFullYear()} Nodefleet, Inc. All rights reserved.
         </p>
+        <Link
+          to="/privacy-policy"
+          className="text-white  font-sans font-normal hover:underline transition-all"
+        >
+          Privacy Policy
+        </Link>
       </div>
     </div>
   );

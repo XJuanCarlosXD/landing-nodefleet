@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { initializeApp } from "firebase/app";
 import { getAnalytics, logEvent } from "firebase/analytics";
 import { useEffect } from "react";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCrJTk0-eePPJxOogYYjguHikambSKspIw",
@@ -35,6 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navbar />}>
             <Route index element={<Home />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           </Route>
         </Routes>
       </BrowserRouter>
