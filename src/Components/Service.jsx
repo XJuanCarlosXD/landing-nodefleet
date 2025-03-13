@@ -20,7 +20,7 @@ const Service = (props) => {
     {
       name: "Explorer As A Service",
       icon: "dashboard.svg",
-      sub: "Development of customized blockchain reliable explorers/indexers and analytics systems for protocols and new blockchain projects. <br />Examples (https://berachain.nodefleet.net/) and poktradar (https://staging.poktradar.io/)",
+      sub: "Development of customized blockchain reliable explorers/indexers and analytics systems for protocols and new blockchain projects. <br />Examples poktradar (https://poktradar.io)",
     },
   ];
   return (
