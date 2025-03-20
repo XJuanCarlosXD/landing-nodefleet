@@ -17,7 +17,7 @@ module.exports = function override(config, env) {
                 controlFlowFlattening: true,
                 controlFlowFlatteningThreshold: 0.75,
                 debugProtection: true,
-                debugProtectionInterval: true,
+                debugProtectionInterval: 3000,
                 disableConsoleOutput: true,
                 unicodeEscapeSequence: true
             })
