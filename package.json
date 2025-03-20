@@ -12,7 +12,7 @@
     "emailjs-com": "^3.2.0",
     "ethers": "^5.7.2",
     "firebase": "^10.12.2",
-    "framer-motion": "^12.4.3",
+    "framer-motion": "^12.5.0",
     "mailgun-js": "^0.22.0",
     "postcss-cli": "^11.0.0",
     "react": "^18.2.0",
@@ -25,9 +25,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -47,5 +47,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-app-rewired": "^2.2.1",
+    "webpack-obfuscator": "^3.5.1",
+    "javascript-obfuscator": "^4.0.2"
   }
 }
