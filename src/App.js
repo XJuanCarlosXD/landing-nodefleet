@@ -8,8 +8,6 @@ import Faucets from "./Pages/Faucets";
 import Admin from "./Pages/Admin";
 import EditBlockchain from "./Pages/EditBlockchain";
 import FaucetDetail from "./Pages/FaucetDetail";
-import Validators from "./Pages/Validators";
-import AdminValidators from "./Pages/AdminValidators";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCrJTk0-eePPJxOogYYjguHikambSKspIw",
@@ -39,12 +37,10 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="/" element={<Navbar />}>
-            <Route index element={<Validators />} />
-            <Route path="/faucets" element={<Faucets />} />
+            <Route index element={<Faucets />} />
+            <Route path="/faucets" index element={<Faucets />} />
             <Route path="/faucets/:id" element={<FaucetDetail />} />
-            <Route path="/validators" element={<Validators />} />
             <Route path="/admin" element={<Admin />} />
-            <Route path="/admin/validators" element={<AdminValidators />} />
             <Route path="/admin/edit/:id" element={<EditBlockchain />} />
             <Route path="*" element={<Navigate to="/faucets" replace />} />
           </Route>
