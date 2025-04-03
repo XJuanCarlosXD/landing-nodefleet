@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { collection, addDoc, query, where, getDocs, Timestamp } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs, Timestamp, orderBy, limit } from "firebase/firestore";
 import { db } from "../firebase.config";
 
 class FaucetManager {
@@ -12,6 +12,16 @@ class FaucetManager {
       this.provider = new ethers.providers.JsonRpcProvider(rpcUrl);
       this.signer = new ethers.Wallet(privateKey, this.provider);
       this.chainId = chainId;
+      
+      // Asegurar que el provider esté listo
+      this.provider.ready.then(() => {
+        // Verificar que el chainId del provider coincida
+        this.provider.getNetwork().then(network => {
+          if (network.chainId !== chainId) {
+            console.warn(`ChainId mismatch: Provider is ${network.chainId}, but ${chainId} was provided`);
+          }
+        });
+      });
     } catch (error) {
       console.error("Error initializing FaucetManager:", error);
       throw new Error("Failed to initialize faucet manager");
@@ -33,6 +43,10 @@ class FaucetManager {
         throw new Error("Invalid address format");
       }
 
+      // Obtener el chainId actual de la red
+      const network = await this.provider.getNetwork();
+      const currentChainId = network.chainId;
+
       // Verificar límite de 24h
       const transactionsRef = collection(db, "transactions");
       const twentyFourHoursAgo = Timestamp.fromDate(
@@ -41,25 +55,25 @@ class FaucetManager {
 
       const q = query(
         transactionsRef,
-        where("uuid", "==", uuid),
-        where("timestamp", ">=", twentyFourHoursAgo)
+        where("uuid", "==", uuid)
       );
-      const querySnapshot = await getDocs(q);
 
-      if (!querySnapshot.empty) {
+      const querySnapshot = await getDocs(q);
+      const recentTransactions = querySnapshot.docs.filter(doc => 
+        doc.data().timestamp.toDate() >= twentyFourHoursAgo
+      );
+
+      if (recentTransactions.length > 0) {
         throw new Error("24-hour limit reached");
       }
 
-      // Enviar transacción
+      // Enviar transacción con el chainId correcto
       const txData = {
-        from: this.signer.address,
         to: address,
         value: ethers.utils.parseUnits("1", 18),
         gasLimit: ethers.BigNumber.from(21000),
-        gasPrice: await this.signer.provider
-          .getFeeData()
-          .then((data) => data.gasPrice || ethers.utils.parseUnits("1", "gwei")),
-        chainId: this.chainId,
+        gasPrice: await this.provider.getGasPrice(),
+        chainId: currentChainId, // Usar el chainId de la red actual
       };
 
       const txResponse = await this.signer.sendTransaction(txData);
@@ -71,13 +85,41 @@ class FaucetManager {
         timestamp: Timestamp.now(),
         hash: txResponse.hash,
         value: 1,
-        chainId: this.chainId,
+        chainId: currentChainId,
+        address: address,
+        status: 'completed'
       });
 
       return txReceipt;
     } catch (error) {
       console.error("Transaction error:", error);
       throw error;
+    }
+  }
+
+  async checkUserTransactions(uuid) {
+    try {
+      const twentyFourHoursAgo = Timestamp.fromDate(
+        new Date(Date.now() - 24 * 60 * 60 * 1000)
+      );
+
+      // Consulta simplificada usando solo uuid
+      const q = query(
+        collection(db, "transactions"),
+        where("uuid", "==", uuid)
+      );
+
+      const querySnapshot = await getDocs(q);
+      
+      // Filtrar manualmente por timestamp
+      const recentTransactions = querySnapshot.docs.filter(doc => 
+        doc.data().timestamp.toDate() >= twentyFourHoursAgo
+      );
+
+      return recentTransactions.length > 0;
+    } catch (error) {
+      console.error("Error checking transactions:", error);
+      throw new Error("Error checking transaction history");
     }
   }
 }
