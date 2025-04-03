@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { collection, addDoc, query, where, getDocs, Timestamp, orderBy, limit } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs, Timestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 
 class FaucetManager {
@@ -12,7 +12,7 @@ class FaucetManager {
       this.provider = new ethers.providers.JsonRpcProvider(rpcUrl);
       this.signer = new ethers.Wallet(privateKey, this.provider);
       this.chainId = chainId;
-      
+
       // Asegurar que el provider esté listo
       this.provider.ready.then(() => {
         // Verificar que el chainId del provider coincida
@@ -59,7 +59,7 @@ class FaucetManager {
       );
 
       const querySnapshot = await getDocs(q);
-      const recentTransactions = querySnapshot.docs.filter(doc => 
+      const recentTransactions = querySnapshot.docs.filter(doc =>
         doc.data().timestamp.toDate() >= twentyFourHoursAgo
       );
 
@@ -110,9 +110,9 @@ class FaucetManager {
       );
 
       const querySnapshot = await getDocs(q);
-      
+
       // Filtrar manualmente por timestamp
-      const recentTransactions = querySnapshot.docs.filter(doc => 
+      const recentTransactions = querySnapshot.docs.filter(doc =>
         doc.data().timestamp.toDate() >= twentyFourHoursAgo
       );
 
