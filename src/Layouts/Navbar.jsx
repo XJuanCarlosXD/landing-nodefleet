@@ -6,7 +6,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const Menu = [
-    { name: "Home", hash: "#Home", path: "/" },
+    { name: "Home", hash: "#Home", path: "https://nodefleet.org" },
     {
       name: "Nodes",
       hash: "https://faucet.nodefleet.org",
