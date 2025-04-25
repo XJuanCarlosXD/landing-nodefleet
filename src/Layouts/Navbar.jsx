@@ -6,7 +6,7 @@ const Navbar = (props) => {
   const isPrivacyPage = location.pathname === "/privacy-policy";
 
   const Menu = [
-    { name: "Home", hash: "#Home", path: "/faucet" },
+    { name: "Home", hash: "#Home", path: "https://nodefleet.org" },
     {
       name: "Validator",
       hash: "https://validator.nodefleet.org",
