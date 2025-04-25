@@ -6,10 +6,16 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const Menu = [
-    { name: "Home", hash: "/faucet" },
+    { name: "Home", hash: "#Home", path: "/" },
+    {
+      name: "Nodes",
+      hash: "https://faucet.nodefleet.org",
+      path: "https://faucet.nodefleet.org",
+    },
     { name: "Service", hash: "https://nodefleet.org/#Service" },
     { name: "Our Team", hash: "https://nodefleet.org/#OurTeam" },
     { name: "Contact", hash: "https://nodefleet.org/#Contact" },
+    { name: "Privacy", path: "/privacy-policy" },
   ];
 
   useEffect(() => {
