@@ -28,12 +28,10 @@ const Index = (props) => {
             Get started
           </a>
           <a
-            href="#service"
-            onClick={() => {
-              document.getElementById("Service11").click();
-            }}
+            href="https://faucet.nodefleet.org"
+            className="text-morado bg-green-300 p-2 px-4 rounded-lg hover:bg-sky-500 transition-all"
           >
-            Learn more <i className="fas fa-arrow-right-long text-sm"></i>
+            Get Nodes
           </a>
         </div>
       </div>

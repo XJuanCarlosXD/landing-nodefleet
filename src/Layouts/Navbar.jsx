@@ -7,6 +7,16 @@ const Navbar = (props) => {
 
   const Menu = [
     { name: "Home", hash: "#Home", path: "/" },
+    {
+      name: "Nodes",
+      hash: "https://faucet.nodefleet.org",
+      path: "https://faucet.nodefleet.org",
+    },
+    {
+      name: "Validator",
+      hash: "https://validator.nodefleet.org",
+      path: "https://validator.nodefleet.org",
+    },
     { name: "Service", hash: "#Service", path: "/#Service" },
     { name: "Our Team", hash: "#OurTeam", path: "/#OurTeam" },
     { name: "Contact", hash: "#Contact", path: "/#Contact" },
@@ -47,16 +57,30 @@ const Navbar = (props) => {
             <i className="fas fa-bars"></i>
           </button>
           <div className="flex justify-between items-center gap-10 max-sm:flex-col max-sm:items-end max-sm:absolute max-sm:right-0 max-sm:top-0 max-sm:gap-0 max-sm:bg-morado/40 z-40 max-sm:divide-y-2 group-hover:max-sm:w-full max-sm:p-4 ease-in-out duration-300 max-sm:scale-x-0 group-hover:max-sm:scale-x-100">
-            {Menu.map(({ name, hash, path }, index) => (
-              <Link
-                key={index}
-                to={path}
-                className="no-underline text-white text-base font-semibold max-sm:py-2"
-                onClick={(e) => handleNavigation(e, hash, path)}
-              >
-                {name}
-              </Link>
-            ))}
+            {Menu.map(({ name, hash, path }, index) => {
+              if (name === "Nodes" || name === "Validator") {
+                return (
+                  <a
+                    key={index}
+                    href={path}
+                    className="no-underline text-white text-base font-semibold max-sm:py-2"
+                  >
+                    {name}
+                  </a>
+                );
+              } else {
+                return (
+                  <Link
+                    key={index}
+                    to={path}
+                    className="no-underline text-white text-base font-semibold max-sm:py-2"
+                    onClick={(e) => handleNavigation(e, hash, path)}
+                  >
+                    {name}
+                  </Link>
+                );
+              }
+            })}
           </div>
         </div>
         <section>
