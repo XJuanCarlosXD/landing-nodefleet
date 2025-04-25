@@ -183,42 +183,89 @@ const Contact = (props) => {
           </div>
         </div>
 
-        <div>
-          <Input
-            name="clusterType"
-            label="Cluster Type*"
-            register={register}
-            required
-            errors={errors.clusterType}
-          />
+        <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-4">
+          <div>
+            <label className="font-semibold mb-2 block">Cluster Type*</label>
+            <select
+              {...register("clusterType", { required: true })}
+              className="p-2 rounded-lg outline-none bg-white/10 border border-white w-full"
+            >
+              <option value="">Select cluster type</option>
+              <option value="Archival">Archival</option>
+              <option value="Mainnet">Mainnet</option>
+            </select>
+            {errors.clusterType && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
+          </div>
+
+          <div>
+            <label className="font-semibold mb-2 block">
+              RPS Requirements*
+            </label>
+            <select
+              {...register("rpsRequirements", { required: true })}
+              className="p-2 rounded-lg outline-none bg-white/10 border border-white w-full"
+            >
+              <option value="">Select RPS requirements</option>
+              <option value="0-1000">0-1000</option>
+              <option value="1000+">1000+</option>
+            </select>
+            {errors.rpsRequirements && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
+          </div>
         </div>
-        <div>
-          <Input
-            name="rpsRequirements"
-            label="RPS Requirements*"
-            register={register}
-            required
-            errors={errors.rpsRequirements}
-          />
+
+        <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-4">
+          <div>
+            <label className="font-semibold mb-2 block">
+              What's your ideal budget?*
+            </label>
+            <select
+              {...register("budget", { required: true })}
+              className="p-2 rounded-lg outline-none bg-white/10 border border-white w-full"
+            >
+              <option value="">Select budget range</option>
+              <option value="<3000/month">Less than $3,000/month</option>
+              <option value="3k-5k">$3,000 - $5,000/month</option>
+              <option value="5k-10k">$5,000 - $10,000/month</option>
+              <option value="10k+">$10,000+/month</option>
+            </select>
+            {errors.budget && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
+          </div>
+
+          <div>
+            <label className="font-semibold mb-2 block">
+              What's your timeline?*
+            </label>
+            <select
+              {...register("timeline", { required: true })}
+              className="p-2 rounded-lg outline-none bg-white/10 border border-white w-full"
+            >
+              <option value="">Select timeline</option>
+              <option value="1-3">1-3 months</option>
+              <option value="4-6">4-6 months</option>
+              <option value="7-9">7-9 months</option>
+              <option value="10-12">10-12 months</option>
+              <option value="12+">12+ months</option>
+            </select>
+            {errors.timeline && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
+          </div>
         </div>
-        <div>
-          <Input
-            name="budget"
-            label="What's your ideal budget?*"
-            register={register}
-            required
-            errors={errors.budget}
-          />
-        </div>
-        <div>
-          <Input
-            name="timeline"
-            label="What's your timeline?*"
-            register={register}
-            required
-            errors={errors.timeline}
-          />
-        </div>
+
         <div>
           <Input
             name="additionalInfo"
