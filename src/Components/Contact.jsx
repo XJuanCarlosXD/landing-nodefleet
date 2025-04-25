@@ -3,34 +3,82 @@ import Input from "./Inputs";
 import axios from "axios"; // Importa Axios
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Contact = (props) => {
+  const chains = [
+    "APT",
+    "ARB",
+    "AVAX",
+    "BASE",
+    "BERA",
+    "BLAST",
+    "BSC",
+    "BTC",
+    "CELO",
+    "COSMOS",
+    "CYBER",
+    "DOT",
+    "ETH",
+    "FLOW",
+    "FTM",
+    "IMX",
+    "MANTLE",
+    "MATIC",
+    "MORPH",
+    "NEAR",
+    "NOVA",
+    "OP",
+    "SCROLL",
+    "SEI",
+    "SOL",
+    "STELLAR",
+    "STRK",
+    "STX",
+    "TRON",
+    "XAI",
+    "XDAI",
+    "ZKSYNC",
+  ];
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
-  const { isFaucets } = props;
 
   const onSubmit = async (data) => {
-    const { name, last, email, message } = data;
-
-    const emailData = {
-      sender_email: "juancarlos192003@gmail.com",
-      recipient_email: "kath@nodefleet.net",
-      subject: "Contact Info Nodefleet",
-      body: `Nombre: ${name} ${last}\nCorreo electrónico: ${email}\n\nMensaje:\n${message}`,
-    };
-
     try {
+      const emailData = {
+        sender_email: "juancarlos192003@gmail.com",
+        recipient_email: "kath@nodefleet.net",
+        subject: "Contact Info Nodefleet - Dedicated Cluster Request",
+        body: `
+          Name: ${data.name} ${data.last}
+          Email: ${data.email}
+          Telegram: ${data.telegram}
+          Organization: ${data.organization}
+          
+          Selected Chains: ${data.chains?.join(", ")}
+          
+          Cluster Type: ${data.clusterType}
+          RPS Requirements: ${data.rpsRequirements}
+          Budget: ${data.budget}
+          Timeline: ${data.timeline}
+          
+          Additional Information:
+          ${data.additionalInfo}
+        `,
+      };
+
       const response = await axios.post(
         "https://staging.api.appbot.do/send-email/",
         emailData
       );
       console.log("Correo enviado:", response.data);
       toast.success("Successfully send email!");
-      reset({ name: "", last: "", email: "", message: "" });
+      reset();
     } catch (error) {
       console.error("Error al enviar el correo:", error);
       toast.error("error to send email!");
@@ -42,58 +90,213 @@ const Contact = (props) => {
       className="flex flex-col gap-4 justify-center items-center text-white relative py-20 max-sm:py-14"
       id="Contact"
     >
-      {!isFaucets && (
-        <img
-          src="https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/end-lan.png"
-          alt="home"
-          className="absolute top-0 left-0 w-full h-full -z-10"
-        />
-      )}
-      <h2 className="font-bold text-4xl mb-6">Contact Us</h2>
+      <img
+        src="https://appbot.nyc3.digitaloceanspaces.com/Landing_Nodefleet/end-lan.png"
+        alt="home"
+        className="absolute top-0 left-0 w-full h-full -z-10"
+      />
+      <h2 className="font-bold text-4xl max-sm:text-xl text-center mb-2 max-sm:px-4">
+        Ready for your own Dedicated Cluster?
+      </h2>
+      <p className="text-center mb-6 text-lg max-sm:text-sm max-sm:px-4">
+        Speak to our team today to explore your dedicated solution for
+        unparalleled performance and security.
+      </p>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col w-6/12 max-sm:w-9/12 gap-6"
+        className="flex flex-col w-8/12 max-sm:w-11/12 gap-6"
       >
         <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-4">
           <Input
             name="name"
-            label="First name"
+            label="First name*"
             register={register}
+            required
             errors={errors.name}
           />
           <Input
             name="last"
-            label="Last name"
+            label="Last name*"
             register={register}
+            required
             errors={errors.last}
           />
         </div>
-        <div>
+        <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-4">
           <Input
             name="email"
-            label="Email"
+            label="Email*"
             type="email"
             register={register}
+            required
             errors={errors.email}
+          />
+          <Input
+            name="telegram"
+            label="Telegram username"
+            register={register}
+            errors={errors.telegram}
           />
         </div>
         <div>
           <Input
-            name="message"
-            label="Message"
+            name="organization"
+            label="Organization*"
+            register={register}
+            required
+            errors={errors.organization}
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="font-semibold">
+            What chains are you interested in?*
+          </label>
+          <div className="grid grid-cols-4 max-sm:grid-cols-2 gap-2 bg-gray-800 p-4 rounded-lg">
+            {chains.map((chain) => (
+              <div key={chain} className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id={chain}
+                  {...register("chains")}
+                  value={chain}
+                  className="w-4 h-4"
+                />
+                <label htmlFor={chain} className="text-sm">
+                  {chain}
+                </label>
+              </div>
+            ))}
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                id="other"
+                {...register("chains")}
+                value="Other"
+                className="w-4 h-4"
+              />
+              <label htmlFor="other" className="text-sm">
+                Other
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-4">
+          <div>
+            <label className="font-semibold mb-2 block">Cluster Type*</label>
+            <select
+              {...register("clusterType", { required: true })}
+              className="p-2 rounded-lg outline-none bg-white/10 border border-white w-full"
+            >
+              <option value="">Select cluster type</option>
+              <option value="Archival">Archival</option>
+              <option value="Mainnet">Mainnet</option>
+            </select>
+            {errors.clusterType && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
+          </div>
+
+          <div>
+            <label className="font-semibold mb-2 block">
+              RPS Requirements*
+            </label>
+            <select
+              {...register("rpsRequirements", { required: true })}
+              className="p-2 rounded-lg outline-none bg-white/10 border border-white w-full"
+            >
+              <option value="">Select RPS requirements</option>
+              <option value="0-1000">0-1000</option>
+              <option value="1000+">1000+</option>
+            </select>
+            {errors.rpsRequirements && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-4">
+          <div>
+            <label className="font-semibold mb-2 block">
+              What's your ideal budget?*
+            </label>
+            <select
+              {...register("budget", { required: true })}
+              className="p-2 rounded-lg outline-none bg-white/10 border border-white w-full"
+            >
+              <option value="">Select budget range</option>
+              <option value="<3000/month">Less than $3,000/month</option>
+              <option value="3k-5k">$3,000 - $5,000/month</option>
+              <option value="5k-10k">$5,000 - $10,000/month</option>
+              <option value="10k+">$10,000+/month</option>
+            </select>
+            {errors.budget && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
+          </div>
+
+          <div>
+            <label className="font-semibold mb-2 block">
+              What's your timeline?*
+            </label>
+            <select
+              {...register("timeline", { required: true })}
+              className="p-2 rounded-lg outline-none bg-white/10 border border-white w-full"
+            >
+              <option value="">Select timeline</option>
+              <option value="1-3">1-3 months</option>
+              <option value="4-6">4-6 months</option>
+              <option value="7-9">7-9 months</option>
+              <option value="10-12">10-12 months</option>
+              <option value="12+">12+ months</option>
+            </select>
+            {errors.timeline && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <Input
+            name="additionalInfo"
+            label="Anything else?"
             textarea={true}
             rows={4}
             register={register}
-            errors={errors.message}
+            errors={errors.additionalInfo}
           />
         </div>
+
+        <div className="flex items-start gap-2 mt-2">
+          <input
+            type="checkbox"
+            {...register("terms")}
+            required
+            className="mt-1 w-4 h-4"
+          />
+          <label className="text-sm text-gray-300">
+            By submitting this form, I agree to Nodefleet's Terms of Service,
+            Privacy Policy, and to be contacted using the information I've
+            provided.*
+          </label>
+        </div>
+
         <div className="w-full">
           <button
             type="submit"
             className="w-full bg-green-300 text-morado font-bold text-base p-2 rounded-lg hover:bg-sky-300 transition-all"
           >
-            Let's talk
+            Submit Request
           </button>
         </div>
       </form>
@@ -130,10 +333,16 @@ const Contact = (props) => {
           <img src="/images/github.svg" alt="github" />
         </a>
       </div>
-      <div className="flex flex-row justify-between font-sans text-sm mt-5">
+      <div className="flex flex-row gap-2 justify-between font-sans text-sm mt-5">
         <p className="text-gray-500 font-sans font-normal">
-          © 2024 Nodefleet, Inc. All rights reserved.
+          © {new Date().getFullYear()} Nodefleet, Inc. All rights reserved.
         </p>
+        <Link
+          to="/privacy-policy"
+          className="text-white  font-sans font-normal hover:underline transition-all"
+        >
+          Privacy Policy
+        </Link>
       </div>
     </div>
   );
