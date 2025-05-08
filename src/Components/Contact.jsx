@@ -231,10 +231,11 @@ const Contact = (props) => {
               className="p-2 rounded-lg outline-none bg-white/10 border border-white w-full"
             >
               <option value="">Select budget range</option>
-              <option value="<3000/month">Less than $3,000/month</option>
-              <option value="3k-5k">$3,000 - $5,000/month</option>
-              <option value="5k-10k">$5,000 - $10,000/month</option>
-              <option value="10k+">$10,000+/month</option>
+              <option value="-800">Less than $800</option>
+              <option value="800-1500">$800 - $1,500</option>
+              <option value="1500-3000">$1,500 - $3,000</option>
+              <option value="3000-6000">$3,000 - $6,000</option>
+              <option value="6000+">$6,000+</option>
             </select>
             {errors.budget && (
               <span className="text-red-500 text-sm">
@@ -252,11 +253,11 @@ const Contact = (props) => {
               className="p-2 rounded-lg outline-none bg-white/10 border border-white w-full"
             >
               <option value="">Select timeline</option>
-              <option value="1-3">1-3 months</option>
-              <option value="4-6">4-6 months</option>
-              <option value="7-9">7-9 months</option>
-              <option value="10-12">10-12 months</option>
-              <option value="12+">12+ months</option>
+              <option value="1-7">1-7 days</option>
+              <option value="8-15">8-15 days</option>
+              <option value="16-30">16-30 days</option>
+              <option value="31-60">31-60 days</option>
+              <option value="60+">60+ days</option>
             </select>
             {errors.timeline && (
               <span className="text-red-500 text-sm">
