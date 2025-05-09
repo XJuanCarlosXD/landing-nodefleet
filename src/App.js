@@ -6,6 +6,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics, logEvent } from "firebase/analytics";
 import { useEffect } from "react";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import Contact from "./Components/Contac2";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCrJTk0-eePPJxOogYYjguHikambSKspIw",
@@ -37,6 +38,7 @@ function App() {
           <Route path="/" element={<Navbar />}>
             <Route index element={<Home />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/nodes" element={<Contact />} />
           </Route>
         </Routes>
       </HashRouter>
