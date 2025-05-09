@@ -218,11 +218,20 @@ const Contact = (props) => {
               <option className="text-black" value="">
                 Select RPS requirements
               </option>
-              <option className="text-black" value="0-1000">
-                0-1000
+              <option className="text-black" value="50-300">
+                50-300
               </option>
-              <option className="text-black" value="1000+">
-                1000+
+              <option className="text-black" value="300-500">
+                300-500
+              </option>
+              <option className="text-black" value="500-800">
+                500-800
+              </option>
+              <option className="text-black" value="800-1200">
+                800-1200
+              </option>
+              <option className="text-black" value="1200+">
+                1200+
               </option>
             </select>
             {errors.rpsRequirements && (
